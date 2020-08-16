@@ -1,4 +1,8 @@
+const Product = require('../models/product')
+
 exports.getAllProducts = (req, res, next) => {
+  const products = Product.fetchAll()
+  console.log(products)
   res.render('shop', { pageTitle: 'All products' })
 }
 
@@ -7,7 +11,7 @@ exports.addProductPage = (req, res, next) => {
 }
 
 exports.submitProduct = (req, res, next) => {
-  const product = req.body
-  console.log(product.title)
+  const product = new Product(req.body.title)
+  product.save()
   res.redirect('/products')
 }
