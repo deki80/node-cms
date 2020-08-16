@@ -9,7 +9,11 @@ const shopRouter = require('./routes/shop')
 
 const app = express()
 
-app.engine('hbs', expressHnb())
+app.engine('hbs', expressHnb({
+  layoutsDir: 'views/layouts/',
+  defaultLayout: 'default-layout',
+  extname: 'hbs'
+}))
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
