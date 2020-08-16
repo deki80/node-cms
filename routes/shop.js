@@ -1,17 +1,13 @@
 const express = require('express')
 
-const path = require('path')
-
 const router = express.Router()
 
-const viewsDir = require('../util')
-
 router.get('/products', (req, res, next) => {
-  res.send('<p>This is a products route</p>')
+  res.render('shop', { pageTitle: 'All products' })
 })
 
 router.get('/', (req, res, next) => {
-  res.sendFile(path.join(viewsDir, '/index.html'))
+  res.render('index', { pageTitle: 'My Web Shop' })
 })
 
 module.exports = router
