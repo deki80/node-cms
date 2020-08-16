@@ -1,5 +1,7 @@
 const express = require('express')
 
+const path = require('path')
+
 const router = express.Router()
 
 router.get('/products', (req, res, next) => {
@@ -7,7 +9,7 @@ router.get('/products', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-  res.send('<p>First one</p>')
+  res.sendFile(path.join(__dirname, '../', 'views/index.html'))
 })
 
 module.exports = router
