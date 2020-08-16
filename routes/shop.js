@@ -2,9 +2,9 @@ const express = require('express')
 
 const router = express.Router()
 
-router.get('/products', (req, res, next) => {
-  res.render('shop', { pageTitle: 'All products' })
-})
+const productsController = require('../controllers/products')
+
+router.get('/products', productsController.getAllProducts)
 
 router.get('/', (req, res, next) => {
   res.render('index', { pageTitle: 'My Web Shop' })

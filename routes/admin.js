@@ -2,14 +2,10 @@ const express = require('express')
 
 const router = express.Router()
 
-router.get('/add-product', (req, res, next) => {
-  res.send('<form action="/admin/submit-product" method="POST"><input type="text" name="title"><button type="submit">Submit</button></form')
-})
+const productsController = require('../controllers/products')
 
-router.post('/submit-product', (req, res, next) => {
-  const product = req.body
-  console.log(product.title)
-  res.redirect('/products')
-})
+router.get('/add-product', productsController.addProductPage)
+
+router.post('/submit-product', productsController.submitProduct)
 
 module.exports = router
