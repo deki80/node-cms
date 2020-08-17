@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const adminRouter = require('./routes/admin')
 const shopRouter = require('./routes/shop')
 
+const sequelize = require('./utils/database')
+
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -22,4 +24,11 @@ app.use((req, res, next) => {
   res.status(404).send('<h1>Page not found...</h1>')
 })
 
-app.listen(3030)
+sequelize.sync()
+  .then(res => {
+    // console.log(res)
+    app.listen(3030)
+  })
+  .catch(error => {
+    console.log(error)
+  })

@@ -3,11 +3,10 @@ const express = require('express')
 const router = express.Router()
 
 const productsController = require('../controllers/products')
+const pagesController = require('../controllers/pages')
 
 router.get('/products', productsController.getAllProducts)
 
-router.get('/', (req, res, next) => {
-  res.render('index', { pageTitle: 'My Web Shop' })
-})
+router.get('/', pagesController.getIndex)
 
 module.exports = router
